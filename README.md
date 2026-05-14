@@ -1,57 +1,64 @@
 # ☕ Sip Spot
 
-### CS50 Final Project  
-**Video Demo:** https://youtu.be/7rjtKGH6a_I
+<p align="center">
+  <strong>CS50 Final Project</strong><br>
+  A practical coffee finder for Temple Bar, Dublin
+</p>
+
+<p align="center">
+  <a href="https://youtu.be/7rjtKGH6a_I">🎥 Watch Video Demo</a>
+</p>
 
 ---
 
-## Overview
+## 📌 Overview
 
-Sip Spot is a web application designed to help users find coffee shops in the Temple Bar area of Dublin based on practical and useful information.
+**Sip Spot** is a web application designed to help users find coffee shops in the Temple Bar area of Dublin based on practical and useful information.
 
 The project was created to solve a real everyday problem: people often want to stop for a coffee in Temple Bar, but they do not always know which place best matches what they need at that moment.
 
-Temple Bar is one of the busiest and most famous areas in Dublin. It attracts tourists, visitors, workers, students, and local customers. Because of that, choosing the right coffee shop is not always as simple as it seems. Some places are better for takeaway, some are better for sitting down, some are more suitable for working, some serve Irish coffee, and some close much earlier than people might expect.
+Temple Bar is one of the busiest and most famous areas in Dublin. It attracts tourists, visitors, workers, students, and local customers. Because of that, choosing the right coffee shop is not always simple. Some places are better for takeaway, some are better for sitting down, some are more suitable for working, some serve Irish coffee, and some close much earlier than people might expect.
 
 Sip Spot was built to make that decision easier by bringing useful café information together in one place.
 
 ---
 
-## Problem It Solves
+## 🎯 Problem It Solves
 
-Sip Spot focuses on practical decision-making.
+Instead of showing only a basic list of cafés, Sip Spot helps users compare coffee shops using categories that actually influence real decisions.
 
-Instead of showing only a basic list of coffee shops, the application helps users compare cafés based on real categories that affect the experience. A user may want:
+For example, a user may want:
 
 - an Americano under a certain price
 - a place that is good for working
-- a café with seating
-- somewhere that is still open later in the day
+- a café with sit-in availability
+- a place that serves Irish coffee
+- a coffee shop that opens earlier
+- a place that closes later
 
 These details may seem small, but together they can strongly influence where someone chooses to go.
 
 ---
 
-## Why Temple Bar
+## 🧭 Why Temple Bar
 
 One of the main design choices of the project was to keep the scope intentionally narrow.
 
-Version 1 focuses only on coffee shops located in Temple Bar. This was done for two reasons:
+Version 1 focuses only on coffee shops located in **Temple Bar, Dublin**. This was done for two reasons:
 
 1. It keeps the project realistic and manageable for the CS50 final project.  
-2. It gives the application a clearer identity.
+2. It gives the application a clearer local identity.
 
 Rather than trying to build a platform for every café in Dublin, Sip Spot begins with one specific area and solves one specific local problem well.
 
-This project is also personally meaningful because it is informed by direct experience with the coffee shop environment in central Dublin. That makes the idea less generic and more connected to real day-to-day use.
+This project is also personally meaningful because it is informed by direct experience with the coffee shop environment in central Dublin, making the concept more real and less generic.
 
 ---
 
-## How the Application Works
+## ✨ Main Features
 
-The user begins on the **Home Page**, where the branding, hero section, and filter form are displayed.
-
-From there, the user can choose practical filters such as:
+### Practical filtering
+Users can search coffee shops by:
 
 - coffee type
 - maximum price
@@ -61,46 +68,10 @@ From there, the user can choose practical filters such as:
 - opening time
 - closing time
 
-Once the form is submitted, Flask receives the selected filter values and uses them to build a query against the SQLite database.
-
-The database stores coffee shop information in one table and coffee prices in another related table. This makes it possible to filter a coffee shop by a specific drink and compare prices in a structured way.
-
-After the query is processed, the application displays matching coffee shops in a styled results section on the Home Page.
+### Integrated results section
+The matching results appear directly on the **Home Page**, creating a smoother and more direct user experience.
 
 Each result card includes:
-
-- photo
-- shop name
-- address
-- selected coffee price information
-- rating
-- practical badges
-- notes
-- link to a dedicated details page
-
-If the user wants more information, they can open a dedicated **details page** for that coffee shop. On this page, the application shows a larger image, address, practical information, notes, rating, and the complete list of coffee types and prices stored for that shop.
-
-The user can also visit the **About page** from the top navigation. This page explains the purpose of the project, the reason for focusing on Temple Bar, and the thinking behind the practical filter categories.
-
----
-
-## Main Features
-
-### Coffee shop filtering
-Users can filter coffee shops by:
-
-- coffee type
-- maximum price
-- whether the place is good for working
-- sit-in or takeaway availability
-- Irish coffee availability
-- opening time
-- closing time
-
-### Results section on the Home Page
-The application displays matching coffee shops directly on the Home Page.
-
-Each card includes:
 
 - coffee shop image
 - coffee shop name
@@ -112,7 +83,7 @@ Each card includes:
 - link to the details page
 
 ### Coffee shop details page
-The details page shows:
+Each coffee shop has a dedicated page showing:
 
 - full image
 - address
@@ -120,100 +91,124 @@ The details page shows:
 - practical categories
 - opening and closing times
 - notes
-- a complete list of coffee types and prices stored for that shop
+- full list of coffee types and prices
 
 ### About page
-The application also includes an About page that explains:
+The project also includes an About page explaining:
 
-- the purpose of the project
-- the reason for focusing on Temple Bar
-- the practical idea behind the filter categories
+- the purpose of Sip Spot
+- the decision to focus on Temple Bar
+- the practical categories used in the app
 
 ---
 
-## Design and User Experience
+## 🖥️ How the Application Works
+
+The user begins on the **Home Page**, where the branding, hero section, and filter form are displayed.
+
+From there, the user can select practical filters such as coffee type, price, work-friendly atmosphere, sit-in or takeaway availability, Irish coffee availability, and opening or closing time.
+
+Once the form is submitted, **Flask** receives the selected values and builds a query against the **SQLite** database.
+
+The database stores:
+
+- coffee shop information in one table
+- coffee prices in a second related table
+
+This allows the application to filter a coffee shop by a specific drink and compare prices in a structured way.
+
+After the query is processed, the application displays matching coffee shops directly on the Home Page.
+
+If the user wants more information, they can open a **details page** for a selected coffee shop. The application also includes an **About page** that explains the project’s purpose and design choices.
+
+---
+
+## 🎨 Design and User Experience
 
 A major part of the development process involved not only functionality but also presentation.
 
-The interface was designed to feel modern, warm, and coffee-inspired. The visual identity includes:
+The interface was designed to feel:
+
+- modern
+- warm
+- coffee-inspired
+- practical
+- easy to scan
+
+The visual identity includes:
 
 - a custom Sip Spot logo
 - a large hero section
 - branded colours
 - coffee shop photography
 - styled result cards
+- a more editorial About page
 
 The Home Page was built as both the introduction and the main search experience. Rather than forcing the user through too many separate steps, the filtering process happens directly on the home screen, and the results appear in the same overall flow.
 
-This makes the application easier to use and keeps the user experience simple.
-
-The details page supports the final decision-making stage, while the About page adds context and makes the website feel more complete.
+This design decision made the application more intuitive and more suitable for quick real-world use.
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-Sip Spot was built with:
-
-- **Python**
-- **Flask**
-- **SQLite**
-- **HTML**
-- **CSS**
+| Technology | Purpose |
+|---|---|
+| **Python** | Core programming language |
+| **Flask** | Routing, backend logic, template rendering |
+| **SQLite** | Local database storage |
+| **HTML** | Page structure |
+| **CSS** | Styling, layout, visual identity |
 
 ---
 
-## Project Structure
+## 🗂️ Project Structure
 
 ### `app.py`
-The main Python file of the application.  
-It handles Flask setup, routes, database queries, filter logic, and page rendering.
+The main application file.  
+It handles Flask setup, routes, filter logic, database queries, and page rendering.
 
 ### `init_db.py`
-Creates the SQLite database structure and defines the tables used in Version 1.
+Creates the SQLite database structure and defines the project tables.
 
 ### `seed_data.py`
-Inserts the coffee shop data and coffee prices into the database. It is used during development and testing.
+Inserts the coffee shop data and coffee prices into the database.
 
 ### `sipspot.db`
-The SQLite database file used by the project. It stores coffee shop information and coffee prices.
+The SQLite database used by the project.
 
-### `templates/layout.html`
-The base HTML layout shared across the application. It contains the site header, navigation, and shared page structure.
+### `templates/`
+Stores the HTML templates used by Flask.
 
-### `templates/index.html`
-The Home Page. It includes the hero section, filter form, and the integrated results section.
+- `layout.html` → shared base layout  
+- `index.html` → Home Page with filters and integrated results  
+- `details.html` → coffee shop details page  
+- `about.html` → About page  
 
-### `templates/details.html`
-Shows the complete details for one selected coffee shop, including full pricing information.
+### `static/`
+Stores all styling and visual assets.
 
-### `templates/about.html`
-Explains the purpose of Sip Spot and the main design ideas behind the project.
-
-### `static/styles.css`
-Contains the full CSS styling of the project, including layout, typography, cards, buttons, responsive behaviour, and branding.
-
-### `static/images/`
-Stores the hero image, coffee shop images, and logo files used throughout the application.
+- `styles.css` → full project styling  
+- `images/` → logo files, hero image, and coffee shop images  
 
 ### `docs/`
-Stores the planning documents created during development, including:
+Stores the project planning documents:
 
-- project scope
+- official scope
 - official features
-- page structure
+- pages structure
 - database plan
 - project structure
 - development plan
 
 ---
 
-## Database Design
+## 🗄️ Database Design
 
-The application uses a simple SQLite database with two main tables.
+The application uses a simple SQLite database with **two main tables**.
 
 ### `coffee_shops`
-This table stores the main coffee shop information, including:
+Stores the main coffee shop information, including:
 
 - name
 - address
@@ -227,48 +222,34 @@ This table stores the main coffee shop information, including:
 - image filename
 
 ### `coffee_prices`
-This table stores coffee types and prices for each coffee shop.
+Stores coffee types and prices for each coffee shop.
 
-This two-table structure was chosen because one coffee shop can have multiple coffee types with different prices. Keeping prices in a separate table makes the data more organised and makes filtering by coffee type and price easier.
+This structure was chosen because one coffee shop can have multiple coffee types with different prices. Keeping prices in a separate table makes the data more organised and makes filtering by coffee type and price easier.
 
 ---
 
-## Key Design Decisions
+## 🧠 Key Design Decisions
 
 ### 1. Narrow and realistic scope
 One of the most important design decisions was to keep the project focused on practical use rather than unnecessary complexity.
 
-It would have been possible to imagine a larger app with maps, accounts, reviews, and many more locations, but that would have weakened the project by making it too broad for Version 1.
+Instead of trying to include maps, accounts, reviews, and all cafés in Dublin, Sip Spot focuses on one area, one clear user problem, and one manageable Version 1.
 
-Instead, the final design focuses on:
+### 2. Integrated results on the Home Page
+Rather than building a separate results page, the results appear directly on the Home Page. This keeps the experience more direct and easier to follow.
 
-- one area
-- one core user problem
-- one clear user experience
-
-### 2. Web application instead of mobile app
-A mobile app might seem like the more obvious format for a coffee finder, but the web application was the best match for the tools and skills used in CS50.
-
-It also remains accessible and responsive while being more realistic for the final project.
-
-### 3. Visual refinement
-The project evolved from a very basic Flask structure into a more polished branded website, including:
-
-- logo design
-- stronger cards
-- a styled hero section
-- a consistent visual language
-
-This made the project feel more like a real product rather than only a technical exercise.
+### 3. Web application instead of mobile app
+A mobile app might seem like the more obvious format for a coffee finder, but a web application was the best match for the tools used in CS50 and for the realistic scope of the project.
 
 ### 4. Separate price table
-The use of a separate `coffee_prices` table was important because each coffee shop can have several drinks with different prices.
+The use of a separate `coffee_prices` table was important because each coffee shop can have several drinks with different prices. This made the database more flexible and more suitable for filtering.
 
-This made the database more flexible and made filtering by coffee type and price much easier than a single-table structure would have allowed.
+### 5. Stronger visual identity
+The project evolved from a simple Flask structure into a more polished branded website, with careful attention to layout, typography, images, branding, and overall presentation.
 
 ---
 
-## Scope of Version 1
+## 📍 Scope of Version 1
 
 ### Included
 - Temple Bar coffee shop listings
@@ -278,9 +259,9 @@ This made the database more flexible and made filtering by coffee type and price
 - styled result cards
 - About page
 - branding and custom logo
-- local image-based presentation
+- image-based presentation
 
-### Not included
+### Not Included
 - user accounts
 - favourites
 - map integration
@@ -290,13 +271,13 @@ This made the database more flexible and made filtering by coffee type and price
 - automatic routing
 - mobile app development
 
-These ideas may be part of a future version, but they are outside the scope of the first release.
+These ideas may be part of future versions, but they are outside the scope of the first release.
 
 ---
 
-## Why This Project Is Different
+## 🚀 Why This Project Stands Out
 
-One of the most important parts of this project is that it is not just a general café list.
+Sip Spot is not just a general café list.
 
 It focuses on practical questions that users genuinely ask in real life, for example:
 
@@ -307,16 +288,22 @@ It focuses on practical questions that users genuinely ask in real life, for exa
 - Which coffee shops are already open?
 - Which coffee shops close later?
 
-This practical focus makes the project more useful than a simple directory. It also gives the application a clear purpose and a stronger local identity.
+This practical focus makes the project more useful than a simple directory and gives it a stronger local identity.
 
 ---
 
-## Final Reflection
+## 🔍 Final Reflection
 
 Sip Spot is a practical coffee finder built around a real local problem in Temple Bar.
 
-It combines structured coffee shop data, practical filters, styled result cards, and detailed information pages in order to help users choose the right coffee shop for their needs.
+It combines:
 
-The project is intentionally small in scope, but strong in focus. It demonstrates the use of Flask, SQLite, HTML, CSS, templating, filtering logic, and relational data while also showing attention to user experience, project structure, and visual identity.
+- structured coffee shop data
+- practical filters
+- styled result cards
+- detailed information pages
+- a strong visual identity
+
+The project is intentionally small in scope, but strong in focus. It demonstrates the use of Flask, SQLite, HTML, CSS, templating, filtering logic, and relational data while also showing attention to user experience, organisation, and presentation.
 
 Sip Spot is not meant to be a complete city-wide coffee platform yet. Instead, it is a clear, realistic, and well-scoped Version 1 that solves a real everyday problem and leaves room for future growth.

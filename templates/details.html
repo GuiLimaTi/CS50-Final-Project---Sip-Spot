@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ shop["name"] }} - Sip Spot{% endblock %}
+
+{% block content %}
+<section class="details-page-section">
+    <div class="container">
+        <div class="details-back-row">
+            <a href="/" class="back-link">← Back to results</a>
+        </div>
+
+        <div class="details-card">
+            <div class="details-image-column">
+                <div class="details-main-image">
+                    <img src="{{ url_for('static', filename='images/' + shop['image_filename']) }}" alt="{{ shop['name'] }}">
+                </div>
+            </div>
+
+            <div class="details-content-column">
+                <div class="details-top-row">
+                    <div>
+                        <h2 class="details-title">{{ shop["name"] }}</h2>
+                        <p class="details-address">📍 {{ shop["address"] }}</p>
+                    </div>
+
+                    <div class="details-rating">
+                        ⭐ {{ "%.1f"|format(shop["rating"]) }}
+                    </div>
+                </div>
+
+                <div class="details-badges">
+                    <span class="badge">🪑 {{ shop["service_type"] }}</span>
+                    <span class="badge">💻 {{ shop["work_friendly"] }}</span>
+                    <span class="badge">
+                        ☘️
+                        {% if shop["irish_coffee"] == 1 %}
+                            Irish coffee
+                        {% else %}
+                            No Irish coffee
+                        {% endif %}
+                    </span>
+                    <span class="badge">🕒 Opens {{ shop["opening_time"] }}</span>
+                    <span class="badge">🌙 Closes {{ shop["closing_time"] }}</span>
+                </div>
+
+                <div class="details-description-block">
+                    <h3>About</h3>
+                    <p>{{ shop["notes"] }}</p>
+                </div>
+
+                <div class="details-prices-block">
+                    <h3>Prices</h3>
+                    <div class="price-list">
+                        {% for item in prices %}
+                            <div class="price-row">
+                                <span>{{ item["coffee_type"] }}</span>
+                                <strong>€{{ "%.2f"|format(item["price"]) }}</strong>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

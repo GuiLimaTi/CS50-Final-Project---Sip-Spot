@@ -1,0 +1,172 @@
+{% extends "layout.html" %}
+
+{% block title %}Home - Sip Spot{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-panel">
+            <img
+                class="hero-background"
+                src="{{ url_for('static', filename='images/hero-temple-bar.jpg') }}"
+                alt="Temple Bar street"
+            >
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Find your<br>perfect coffee<br>shop</h2>
+                    <p>
+                        Discover independent cafés in Temple Bar, Dublin.<br>
+                        Great coffee, good vibes, right around the corner.
+                    </p>
+                </div>
+
+                <div class="hero-filters-box">
+                    <form class="hero-filters-grid" method="GET" action="/">
+                        <div class="form-group">
+                            <label for="coffee-type">Coffee type</label>
+                            <select id="coffee-type" name="coffee_type">
+                                <option value="Any" {% if filters.coffee_type == "Any" %}selected{% endif %}>Any</option>
+                                <option value="Americano" {% if filters.coffee_type == "Americano" %}selected{% endif %}>Americano</option>
+                                <option value="Espresso" {% if filters.coffee_type == "Espresso" %}selected{% endif %}>Espresso</option>
+                                <option value="Cappuccino" {% if filters.coffee_type == "Cappuccino" %}selected{% endif %}>Cappuccino</option>
+                                <option value="Latte" {% if filters.coffee_type == "Latte" %}selected{% endif %}>Latte</option>
+                                <option value="Flat White" {% if filters.coffee_type == "Flat White" %}selected{% endif %}>Flat White</option>
+                                <option value="Irish Coffee" {% if filters.coffee_type == "Irish Coffee" %}selected{% endif %}>Irish Coffee</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="max-price">Max price</label>
+                            <select id="max-price" name="max_price">
+                                <option value="Any" {% if filters.max_price == "Any" %}selected{% endif %}>Any</option>
+                                <option value="3.00" {% if filters.max_price == "3.00" %}selected{% endif %}>Up to €3.00</option>
+                                <option value="3.50" {% if filters.max_price == "3.50" %}selected{% endif %}>Up to €3.50</option>
+                                <option value="4.00" {% if filters.max_price == "4.00" %}selected{% endif %}>Up to €4.00</option>
+                                <option value="4.50" {% if filters.max_price == "4.50" %}selected{% endif %}>Up to €4.50</option>
+                                <option value="5.50" {% if filters.max_price == "5.50" %}selected{% endif %}>Up to €5.50</option>
+                                <option value="11.00" {% if filters.max_price == "11.00" %}selected{% endif %}>Up to €11.00</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="working">Good for working</label>
+                            <select id="working" name="working">
+                                <option value="Any" {% if filters.working == "Any" %}selected{% endif %}>Any</option>
+                                <option value="Yes" {% if filters.working == "Yes" %}selected{% endif %}>Yes</option>
+                                <option value="Limited" {% if filters.working == "Limited" %}selected{% endif %}>Limited</option>
+                                <option value="No" {% if filters.working == "No" %}selected{% endif %}>No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service-type">Sit-in or takeaway</label>
+                            <select id="service-type" name="service_type">
+                                <option value="Any" {% if filters.service_type == "Any" %}selected{% endif %}>Any</option>
+                                <option value="Sit-in and takeaway" {% if filters.service_type == "Sit-in and takeaway" %}selected{% endif %}>Sit-in and takeaway</option>
+                                <option value="Sit-in only" {% if filters.service_type == "Sit-in only" %}selected{% endif %}>Sit-in only</option>
+                                <option value="Takeaway only" {% if filters.service_type == "Takeaway only" %}selected{% endif %}>Takeaway only</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="irish-coffee">Irish coffee</label>
+                            <select id="irish-coffee" name="irish_coffee">
+                                <option value="Any" {% if filters.irish_coffee == "Any" %}selected{% endif %}>Any</option>
+                                <option value="Yes" {% if filters.irish_coffee == "Yes" %}selected{% endif %}>Yes</option>
+                                <option value="No" {% if filters.irish_coffee == "No" %}selected{% endif %}>No</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="opens-from">Opens from</label>
+                            <input type="time" id="opens-from" name="opens_from" value="{{ filters.opens_from }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="closes-after">Closes after</label>
+                            <input type="time" id="closes-after" name="closes_after" value="{{ filters.closes_after }}">
+                        </div>
+
+                        <div class="form-group search-button-group">
+                            <button type="submit" class="hero-search-button">Search Sip Spots</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="coffee-list" class="coffee-list-section">
+    <div class="container">
+        <div class="results-header">
+            <div>
+                <h3>Results</h3>
+                <p>{{ coffee_shops|length }} coffee shop(s) found.</p>
+            </div>
+        </div>
+
+        {% if coffee_shops %}
+            <div class="results-list">
+                {% for shop in coffee_shops %}
+                    <article class="result-card">
+                        <div class="result-image">
+                            <img src="{{ url_for('static', filename='images/' + shop['image_filename']) }}" alt="{{ shop['name'] }}">
+                        </div>
+
+                        <div class="result-content">
+                            <div class="result-top">
+                                <div class="result-main">
+                                    <h4>{{ shop["name"] }}</h4>
+                                    <p class="result-address">{{ shop["address"] }}</p>
+
+                                    {% if shop["display_price"] %}
+                                        <p class="result-price-line">
+                                            <span class="price-coffee">{{ shop["display_coffee_type"] }}</span>
+                                            <span class="price-dot">·</span>
+                                            <span class="price-value">€{{ "%.2f"|format(shop["display_price"]) }}</span>
+                                        </p>
+                                    {% endif %}
+                                </div>
+
+                                <div class="result-rating">
+                                    ⭐ {{ "%.1f"|format(shop["rating"]) }}
+                                </div>
+                            </div>
+
+                            <div class="result-badges">
+                                <span class="badge">🪑 {{ shop["service_type"] }}</span>
+                                <span class="badge">💻 {{ shop["work_friendly"] }}</span>
+                                <span class="badge">
+                                    ☘️
+                                    {% if shop["irish_coffee"] == 1 %}
+                                        Irish coffee
+                                    {% else %}
+                                        No Irish coffee
+                                    {% endif %}
+                                </span>
+                                <span class="badge">🕒 Opens {{ shop["opening_time"] }}</span>
+                                <span class="badge">🌙 Closes {{ shop["closing_time"] }}</span>
+                            </div>
+
+                            <p class="result-notes">{{ shop["notes"] }}</p>
+
+                            <div class="result-actions">
+                                <a href="{{ url_for('coffee_details', shop_id=shop['id']) }}" class="details-button">View details</a>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state-card">
+                <h4>No coffee shops found</h4>
+                <p>Try changing your filters and search again.</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

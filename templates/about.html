@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block title %}About - Sip Spot{% endblock %}
+
+{% block content %}
+<section class="about-page-premium">
+    <div class="container">
+
+        <section class="about-premium-hero">
+            <img
+                src="{{ url_for('static', filename='images/about-hero.jpg') }}"
+                alt="Temple Bar street"
+                class="about-premium-hero-image"
+            >
+            <div class="about-premium-overlay"></div>
+
+            <div class="about-premium-content">
+                <h1>Find the right coffee place for the right moment.</h1>
+                <p>
+                    Sip Spot helps people discover cafés in Temple Bar based on what actually matters:
+                    coffee type, price, work-friendly atmosphere, Irish coffee availability, and opening hours.
+                </p>
+            </div>
+        </section>
+
+        <section class="about-info-grid">
+            <article class="about-info-card">
+                <div class="about-card-icon">☕</div>
+                <h2>Why Sip Spot exists</h2>
+                <p>
+                    In Temple Bar, not every café fits the same moment. Sometimes you need a quick takeaway,
+                    sometimes a place to sit, sometimes a café that works well for studying or working,
+                    and sometimes somewhere that stays open later.
+                </p>
+            </article>
+
+            <article class="about-info-card">
+                <div class="about-card-icon">✓</div>
+                <h2>What users can filter</h2>
+                <ul class="about-feature-list">
+                    <li>Coffee type</li>
+                    <li>Maximum price</li>
+                    <li>Good for working</li>
+                    <li>Sit-in or takeaway</li>
+                    <li>Irish coffee availability</li>
+                    <li>Opening and closing times</li>
+                </ul>
+            </article>
+
+            <article class="about-info-card">
+                <div class="about-card-icon">📍</div>
+                <h2>Local focus</h2>
+                <p>
+                    Sip Spot starts with Temple Bar, one of Dublin’s busiest and most recognizable areas.
+                    It is a practical local-first project designed around real coffee decisions.
+                </p>
+            </article>
+        </section>
+
+        <section class="about-middle-grid">
+            <article class="about-numbers-card">
+                <h2>By the numbers</h2>
+
+                <div class="about-numbers-grid">
+                    <div class="number-box">
+                        <span class="number-value">6+</span>
+                        <span class="number-label">practical filters</span>
+                    </div>
+
+                    <div class="number-box">
+                        <span class="number-value">1</span>
+                        <span class="number-label">local area</span>
+                    </div>
+
+                    <div class="number-box">
+                        <span class="number-value">6</span>
+                        <span class="number-label">featured cafés</span>
+                    </div>
+
+                    <div class="number-box">
+                        <span class="number-value">100%</span>
+                        <span class="number-label">focused on real-world café decisions</span>
+                    </div>
+                </div>
+            </article>
+
+            <div class="about-side-image-card">
+                <img
+                    src="{{ url_for('static', filename='images/about-quays.jpg') }}"
+                    alt="Temple Bar daytime street"
+                    class="about-side-image"
+                >
+            </div>
+        </section>
+
+        <section class="about-wide-image-section">
+            <img
+                src="{{ url_for('static', filename='images/about-night.jpg') }}"
+                alt="Temple Bar at night"
+                class="about-wide-image"
+            >
+        </section>
+
+        <section class="about-stack-section">
+            <h2>Built with</h2>
+            <div class="about-stack-tags">
+                <span>Python</span>
+                <span>Flask</span>
+                <span>SQLite</span>
+                <span>HTML</span>
+                <span>CSS</span>
+            </div>
+        </section>
+
+    </div>
+</section>
+{% endblock %}

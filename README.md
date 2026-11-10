@@ -4,7 +4,7 @@ A Flask web app that helps people choose a coffee shop in Temple Bar by the thin
 
 **Languages:** Python, SQL, HTML, CSS · **Framework:** Flask · **Database:** SQLite · **Status:** Completed (Version 1, 2026)
 
-**Video demo:** https://youtu.be/7rjtKGH6a_I
+**Live demo:** https://guilimati.pythonanywhere.com · **Video demo:** https://youtu.be/7rjtKGH6a_I
 
 ## Overview
 

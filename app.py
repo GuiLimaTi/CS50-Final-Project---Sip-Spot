@@ -1,11 +1,17 @@
 from flask import Flask, render_template, request
+import os
 import sqlite3
 
 app = Flask(__name__)
 
+# Always use the database that lives next to this file, so the app works
+# no matter which folder it is started from
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATABASE = os.path.join(BASE_DIR, "sipspot.db")
+
 
 def get_db_connection():
-    conn = sqlite3.connect("sipspot.db")
+    conn = sqlite3.connect(DATABASE)
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -46,8 +52,12 @@ def index():
         params.append(coffee_type)
 
     if max_price != "Any":
-        query += " AND cp.price <= ?"
-        params.append(float(max_price))
+        try:
+            params.append(float(max_price))
+            query += " AND cp.price <= ?"
+        except ValueError:
+            # Ignore an invalid price instead of crashing the page
+            max_price = "Any"
 
     if working != "Any":
         query += " AND cs.work_friendly = ?"
@@ -88,11 +98,14 @@ def index():
                 (shop["id"], coffee_type)
             ).fetchone()
         else:
+            # Show a drink that respects the max price filter (if any)
+            price_limit = float(max_price) if max_price != "Any" else None
             display_price = conn.execute(
                 """
                 SELECT coffee_type, price
                 FROM coffee_prices
                 WHERE coffee_shop_id = ?
+                  AND (? IS NULL OR price <= ?)
                 ORDER BY
                     CASE
                         WHEN coffee_type = 'Americano' THEN 1
@@ -103,7 +116,7 @@ def index():
                     price ASC
                 LIMIT 1
                 """,
-                (shop["id"],)
+                (shop["id"], price_limit, price_limit)
             ).fetchone()
 
         display_cards.append({
@@ -178,9 +191,14 @@ def coffee_details(shop_id):
     conn.close()
 
     if shop is None:
-        return "Coffee shop not found", 404
+        return render_template("not_found.html"), 404
 
     return render_template("details.html", shop=shop, prices=prices)
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template("not_found.html"), 404
 
 
 if __name__ == "__main__":

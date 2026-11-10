@@ -47,12 +47,23 @@ Keeping prices in a separate table makes it easy to filter by a specific drink a
 
 ## How to run
 
+The repository already includes the populated database (`sipspot.db`), so you only need Flask:
+
 ```bash
 pip install -r requirements.txt
+python app.py
+```
+
+Then open http://127.0.0.1:5000 in your browser.
+
+To rebuild the database from scratch (optional):
+
+```bash
 python init_db.py      # create the tables
 python seed_data.py    # load the coffee shops and prices
-flask run
 ```
+
+The app always uses the `sipspot.db` file next to `app.py`, so it works no matter which folder you start it from.
 
 ## Project structure
 
@@ -61,7 +72,7 @@ app.py            Flask app: routes, filters and queries
 init_db.py        Creates the database tables
 seed_data.py      Inserts coffee shops and prices
 sipspot.db        SQLite database
-templates/        layout, index (home + results), details, about
+templates/        layout, index (home + results), details, about, not_found
 static/           styles.css and images
 docs/             Planning documents: scope, features, pages, database and development plan
 ```

@@ -1,6 +1,9 @@
+import os
 import sqlite3
 
-conn = sqlite3.connect("sipspot.db")
+# Create/update the database next to this file
+DATABASE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sipspot.db")
+conn = sqlite3.connect(DATABASE)
 cursor = conn.cursor()
 
 cursor.execute("DELETE FROM coffee_prices")

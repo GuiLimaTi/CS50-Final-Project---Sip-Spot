@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Page not found - Sip Spot{% endblock %}
+
+{% block content %}
+<section class="details-page-section">
+    <div class="container">
+        <div class="details-back-row">
+            <a href="{{ url_for('index') }}" class="back-link">← Back to results</a>
+        </div>
+        <h1>Page not found</h1>
+        <p>Sorry, we couldn't find that coffee shop or page. Head back to the results to find your next coffee.</p>
+    </div>
+</section>
+{% endblock %}
